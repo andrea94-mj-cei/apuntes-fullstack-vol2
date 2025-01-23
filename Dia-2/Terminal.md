@@ -21,9 +21,16 @@ DIFERENTES COMANDOS:
 - rmdir : eliminar carpeta (mrdit+nombreCarpeta)
 - rm -rf : eliminar carpeta y todo su contenido (em -rf + nombreCarpeta)
 
+### Para crear un nuevo archivo
+- touch : crear un nuevo archivo (touch+nombreNuevoArchivo)
+
 ## Flags
 -l : para obtener toda la información del archivo
 -v : para que te diga la versión del programa que tienes instalada
+-y : para que te genere un nuevo proyecto con npm y que no te haga todas las preguntas
+-D : para instalar paquete como dependencia de desarrollador
+-g : para instalar el paquete solamente en el ordenador (de forma global)
+-E : para mantener la versión exacta del paquete
 
 
 # NODE
@@ -36,8 +43,22 @@ Es el sistema de gestión de paquetes por defecto de NODE.js , existen otros con
 
 - npm init : para iniciar npm
 - npm i : para instalar el paquete (npm init + nombrePaquete)
+- npm i nombre-paquete@(versión) : instalar paquete de una versión actualizable
+- npm i nombre-paquete@(versión) -E : instalar paquete de una versión específica (no actualizable)
+- npm i nombre-paquete@latest : instalar la última versión del paquete
+- npm list -g --depth=0 : para ver una lista de paquetes instalados de manera global 
 
-
+```json
+{
+    "dependencies":{
+        "nombre-paquete": "^1.2.0", //Actualizable a la 1.X.Y (versión por defecto)
+        "nombre-paquete": "~1.2.0", //Actualizable a la 1.2.X
+        "nombre-paquete": "1.2.0", //exacta
+        "nombre-paquete": ">1.2.0", //Todas las versiones mayores a 1.2.0
+        "nombre-paquete": "<1.2.0" //Todas las versiones menores a 1.2.0
+    }
+}
+```
 
 
 

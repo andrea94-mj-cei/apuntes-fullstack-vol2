@@ -1,4 +1,4 @@
-console.log("Galería de arte");
+console.log("Galería de arte  \n");
 
 const ArtGallery = [ 
     { id: 1, artist: "Monet", title: "Water Lilies", year: 1916, isExhibited: true },
@@ -13,40 +13,41 @@ const ArtGallery = [
     { id: 10, artist: "Vermeer", title: "Girl with a Pearl Earring", year: 1665, isExhibited: true }
     ];
 
-console.log("Actividad 1");
+console.log("Actividad 1 \n");
 ArtGallery.forEach((obra) => {
-    const estado = obra.isExhibited ? "se encuentra exhibida" : "no encuentra exhibida";
-    console.log(`La obra "${obra.title}" por el autor ${obra.artist} (${obra.year}) ${estado}`);
+    //CONDICIONAL TERNARIO
+    const estado = obra.isExhibited ? "SE" : "NO SE";
+    console.log(`La obra "${obra.title}" por el autor ${obra.artist} (${obra.year}) ${estado} encuentra exhibida`);
 });
 
-console.log("Actividad 2");
+console.log("Actividad 2 \n");
 const titulos = ArtGallery.map((obra) => obra.title);
 console.log(titulos);
 
-console.log("Actividad 3");
+console.log("Actividad 3 \n");
 const exhibidas = ArtGallery.filter((obra)=>obra.isExhibited);
 console.log(exhibidas);
 
-console.log("Actividad 4");
+console.log("Actividad 4 \n");
 function buscarObra(title) {
     const obra = ArtGallery.find((nombre) => nombre.title.toLowerCase() === title.toLowerCase());
     return obra ? obra : "Obra no encontrada";
 }
 console.log(buscarObra("The kiss")); 
 
-console.log("Actividad 5");
+console.log("Actividad 5 \n");
 function yearObra(year) {
     return ArtGallery.some((obra) => obra.year === year);
 }
 console.log(yearObra(1503));
 
-console.log("Actividad 6");
+console.log("Actividad 6 \n");
 function antesDeNacimiento(year) {
     return ArtGallery.every((obra) => obra.year < year);
 }
 console.log(antesDeNacimiento(1994)); 
 
-console.log("Actividad 7");
+console.log("Actividad 7 \n");
 function posicionObra(title) {
     const posicion = ArtGallery.findIndex((artwork) => artwork.title.toLowerCase() === title.toLowerCase());
     return posicion !== -1 ? posicion : "Obra no encontrada";
