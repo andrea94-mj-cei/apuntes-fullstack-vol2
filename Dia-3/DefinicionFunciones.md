@@ -37,7 +37,7 @@ miBoton.addEventListener("click", function(){
 
 
 ## Actividad para el fin de semana
-- Crear en una carpeta "test-math" un archivo "lib/math.js" con las funciones de sumar, restar, multiplicar, dividir.
+- Crear en una carpeta "test-math" un archivo "lib/math.js" con las funciones de sumar, restar, multiplicar y dividir.
 - crear un archivo index.js que importe las funciones de math.js y muestre los resultados en consola.
 
 ```js
