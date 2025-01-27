@@ -1,4 +1,4 @@
-const { sumar, restar, multiplicar, dividir } = require('./lib/math');
+const { sumar, restar, multiplicar, dividir } = require('./lib/math.js');
 
 
 console.log("Suma: 18 + 23 =", sumar(18, 23));
