@@ -7,7 +7,7 @@
 - Nos permite tener variables inteligentes que se van a re-renderizar cada vez que las actualizamos.
 
 
-## 10 actividades con useState
+## 10 ACTIVIDADES con useState
 Ejercicios de useState en repo Component-party.
 
 1. Contador Simple:
@@ -44,4 +44,6 @@ Crea un área de texto que muestre en tiempo real un recuento de palabras y cara
 
 10. Carrito de Compras:
 Implementa un carrito de compras simple donde los usuarios puedan añadir items, ver el total y la cantidad de items. Investiga el método "reduce" para arrays para calcular el total.
+
+
 
