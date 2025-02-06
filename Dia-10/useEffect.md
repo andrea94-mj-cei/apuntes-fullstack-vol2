@@ -34,7 +34,7 @@ const MiComp = ()=>{
 
 useEffect nos permite replicar el comportamiento de métodos que poseen los componentes con clases
 
-- **componentDidMount**: Se ejecuta el código una vezm después de renderizar
+- **componentDidMount**: Se ejecuta el código una vezm después de renderizar. Recordar incluir el segundo parámetro [] para que se ejecute únicamente en el Mount
 - **componentDidUpdate**: Se ejecuta cada vez que actualizabamos el componente
 - **componentWillUnmount**: Se ejecuta justo antes de que el componente se desmonte y se elimine del DOM.
 
@@ -82,7 +82,7 @@ export const Temporizador = () =>{
 
 ## ACTIVIDADES con useEffect (en Component-Party)
 
-1. Crea un componente que muestre un mensaje en la consola cuando el componente se monte por primera vez.
+1. Crea un componente que muestre un mensaje en la consola cuando el componente se monte por primera vez. "Hola mundo"
 
 2. Crea un componente que registre el tiempo en segundos desde que el componente se montó.
 
@@ -94,4 +94,4 @@ export const Temporizador = () =>{
 
 6. Crea un componente que sincronice un estado con el localStorage del navegador.
 
-7. Crear un componente que muestre en consola cada vez que se monta/desomnta el componente.
+7. Crear un componente que muestre en consola cada vez que se monta/desomnta el componente. 
