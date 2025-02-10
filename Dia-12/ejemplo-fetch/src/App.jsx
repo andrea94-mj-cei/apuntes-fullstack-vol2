@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 import './css/App.css'
 import { FetchUser } from '@/components/FetchUser.jsx'
-import { ActividadFetch } from './components/ActividadFetch'
+import { UserList } from '@/components/UserList.jsx'
 
 function App() {
 
 
   return (
     <>
-        <ActividadFetch/>
+      <div>
+        <UserList />
+      </div>
     </>
   )
 }
