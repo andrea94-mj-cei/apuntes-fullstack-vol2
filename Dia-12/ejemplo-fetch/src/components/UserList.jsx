@@ -22,6 +22,10 @@ export const UserList = () => {
         }
     };
 
+    const handlePagePrev = () => setPage((prev) => Math.max(prev - 1, 0));
+
+    const handlePageNext = () => setPage((prev) => (prev + 1) * 5 < total ? prev + 1 : prev);
+
     useEffect(() => {
         fetchUsers(page);
     }, [page]);
@@ -39,10 +43,10 @@ export const UserList = () => {
                 </div>
             )}
             <div>
-                <button onClick={() => setPage((prev) => Math.max(prev - 1, 0))} disabled={page === 0}>
+                <button onClick={handlePagePrev} disabled={page === 0}>
                     Anterior
                 </button>
-                <button onClick={() => setPage((prev) => (prev + 1) * 5 < total ? prev + 1 : prev)} disabled={(page + 1) * 5 >= total}>
+                <button onClick={handlePageNext} disabled={(page + 1) * 5 >= total}>
                     Siguiente
                 </button>
             </div>
