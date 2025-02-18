@@ -3,6 +3,8 @@ import {useParams} from 'react-router-dom'
 
 
 const BlogPost = () => {
+    //leer las distintas params
+    //por ejemplo :blogId y :jaume
 
     const {blogId} = useParams();
 
