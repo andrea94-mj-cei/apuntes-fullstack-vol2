@@ -5,7 +5,8 @@ import Error from "@/pages/Error";
 
 import Home from "@/pages/Home";
 import Catalogo from "@/pages/Catalogo";
-import Info from "@/pages/Info";
+import InfoPeli from "@/pages/InfoPeli";
+import Perfil from "@/pages/Perfil"
 
 const router = createBrowserRouter([{
     path:"/",
@@ -20,8 +21,12 @@ const router = createBrowserRouter([{
             element: <Catalogo/>
         },
         {
-            path: "/info",
-            element: <Info/>
+            path: "/perfil",
+            element: <Perfil/>
+        },
+        {
+            path: "/infoPeli/:id",
+            element: <InfoPeli/>
         },
         {
             path: "*",
