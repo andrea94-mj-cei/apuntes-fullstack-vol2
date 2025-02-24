@@ -1,0 +1,13 @@
+### Archivo para hacer nuestras consultas al servidor
+
+GET http://localhost:3000
+
+
+### OBTENER LISTA DE USUARIOS:
+
+GET http://localhost:3000/usuario
+
+
+### ELIMINAR USUARIO
+
+DELETE http://localhost:3000/usuario/6
