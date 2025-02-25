@@ -1,0 +1,11 @@
+# ### Archivo para hacer nuestras consultas al servidor
+
+
+
+POST http://localhost:3000/api/v1/tareas
+content-type: aplication/json
+
+{
+    "tarea": "Esta es una nueva tarea",
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}

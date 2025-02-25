@@ -3,7 +3,7 @@ import {PORT, DOMAIN, FULLDOMAIN} from './config/config.js'
 
 const app = express();
 
-//GET
+//GET (obtener)
 app.get("/", (req, res)=>{
     res.send("Buenas!");
 })
@@ -12,13 +12,18 @@ app.get("/usuario", (req, res)=>{
     res.send("Lista de usuarios");
 })
 
-//POST
+//POST (crear un nuevo dato)
 app.post("/usuario", (req, res) =>{
     res.send("Crear nuevo usuario");
 })
 
-//PUT
+//PUT (actualiza todo nuestro item por los valores que le envio)
 app.put("/usuario", (req, res) =>{
+    res.send("Actualizar usuario");
+})
+
+//PATCH (actualiza solo los valores que envío)
+app.patch("/usuario", (req, res) =>{
     res.send("Actualizar usuario");
 })
 

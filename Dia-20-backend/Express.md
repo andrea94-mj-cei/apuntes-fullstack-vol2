@@ -69,7 +69,11 @@ import {PORT, DOMAIN, FULLDOMAIN} from './config/config.js'
 
 ## MÉTODOS HTTP request:
 
-- GET: obtener información
-- POST: enviar información
-- PUT: actiualizar información
+- GET: obtener registros
+- POST: crear un nuevo registro
+- PUT: reemplazar un registro con los valores que le envío
+- PATCH: actualizar un registro con los valores que le envío
 - DELETE: eliminar información
+
+ACLARACIÓN:
+- Se suele usar PUT como si fuera un patch. Y patch no se usa.
