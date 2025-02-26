@@ -16,7 +16,7 @@ app.use(Despedir);
 app.use(express.json()); //leer/parse el posible body como JSON
 
 //Rutas (llamamos a Middlewares específicos)
-app.get("/", Auth, Saludar, (req, res, next) =>{
+app.get("/", Saludar, (req, res, next) =>{
     res.send("Bienvenidos a nuestro RestAPI de tareas")
 })
 

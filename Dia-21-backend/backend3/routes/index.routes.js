@@ -6,7 +6,7 @@ import {Router} from 'express';
 //impoortamos todas las tareas
 import { createTarea, getAllTareas, getTarea, updateTarea, deleteTarea } from '../controllers/tareas.controller.js';
 
-//guardamos todas las rutas en router
+//guardamos todas las rutas en router: se accede a todas desde "/api/v1/"
 const router = Router();
 
 
