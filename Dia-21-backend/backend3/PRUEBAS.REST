@@ -11,7 +11,7 @@ POST http://localhost:3000/api/v1/tareas
 content-type: application/json
 
 {
-    "tarea": "Esta es una nueva tarea",
+    "tarea": "Esta es una nueva tarea prolija",
     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
 
@@ -19,3 +19,18 @@ content-type: application/json
 
 DELETE http://localhost:3000/api/v1/tareas/25
 
+
+### Obtener la tarea 36
+
+GET http://localhost:3000/api/v1/tareas/36
+
+### Actualizar tarea
+
+PUT http://localhost:3000/api/v1/tareas/25
+content-type: application/json
+
+{
+    "tarea": "EXPRESS INSTALADO",
+    "completado": true,
+    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+}

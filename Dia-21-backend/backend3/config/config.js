@@ -1,7 +1,12 @@
 //en este archivo es donde se crean las variables de configuración de nuestra API, las exportamos para importarlas en index.js
 
-export const PORT = 3000;
+import dotenv from 'dotenv'
+dotenv.config();
 
-export const DOMAIN = "http://localhost";
 
-export const FULLDOMAIN = "http://localhost:3000";
+
+export const PORT = process.env.PORT || 3000
+
+export const DOMAIN = process.env.DOMAIN || "http://localhost"
+
+export const FULLDOMAIN = `${DOMAIN}:${PORT}`;
