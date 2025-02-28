@@ -13,16 +13,12 @@ export const createTarea = async (req, res, next) =>{
     try{
 
         const{tarea} = req.body;
-
         const nuevaTarea = await prisma.tareas.create({
             data:{
                 // tarea: req.body.tarea,
-                tarea: tarea,
-
+                tarea: tarea
             }
         });
-        
-        
 
         responseAPI.msg="Tarea creada con éxito";
         responseAPI.data=nuevaTarea;
@@ -36,24 +32,54 @@ export const createTarea = async (req, res, next) =>{
     }
 }
 
-export const getTareas = async (req, res, next) =>{
+export const getAllTareas = async (req, res, next) =>{
     try{
-        //trabajar con la base de datos
-        const listaTareas = await prisma.tareas.findMany();
 
-        responseAPI.msg="Lista de tareas obtenidas con éxito";
-        responseAPI.data=listaTareas;
-        responseAPI.status="ok",
-        responseAPI.cant=listaTareas.length;
-
-        res.status(200).json(responseAPI);
+    const listaTareas = await prisma.tareas.findMany();    
+        
+    responseAPI.msg="Las tareas han sido obtenidas con éxito";
+    responseAPI.data=listaTareas;
+    responseAPI.status="ok",
+    responseAPI.cant=null;
 
     }catch(error){
         next(error);
     }
-}
+};
 
-export const getAllTareas = async (req, res, next) =>{};
-export const getTarea = async (req, res, next) =>{};
-export const updateTarea = async (req, res, next) =>{};
+export const getTarea = async (req, res, next) =>{
+    try{
+
+    const {id} = req.params;
+
+    const tarea = await prisma.tareas.findUnique({
+        where:{
+            id: parseInt(id) // convierte el string a número
+        }});
+
+    responseAPI.msg=`La tarea con ${id} ha sido obtenida con éxito`;
+    responseAPI.data=listaTareas;
+    responseAPI.status="ok",
+    responseAPI.cant=null;    
+
+    }catch(error){
+        next(error);
+    }
+};
+export const updateTarea = async (req, res, next) =>{
+    try{
+
+    const tareaActualizada = await prisma.tareas.update({
+        where:{
+            id: parseInt(req.params.id)
+        },
+        data:{
+            tarea: req.body.tarea
+        }
+    });
+
+    }catch(error){
+        next(error);
+    }
+};
 export const deleteTarea = async (req, res, next) =>{};
