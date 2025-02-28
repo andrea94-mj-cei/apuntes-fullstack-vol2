@@ -35,3 +35,10 @@ npx prisma migrate dev --name init
 npx prisma generate
 ```
 
+- En el archivo donde vamos a usar los datos de la DB hay que importar:
+
+```js
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+```
+

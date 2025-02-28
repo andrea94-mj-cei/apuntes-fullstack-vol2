@@ -13,6 +13,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//los modelos en PRISMA se escriben con PascalCase pero se usan en lowercase
+// Tareas -> tareas
+
 model Tareas {
   id            Int @id @default(autoincrement())
   tarea         String
