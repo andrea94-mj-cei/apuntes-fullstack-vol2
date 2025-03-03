@@ -42,3 +42,11 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 ```
 
+- Para que nos cree un nuevo documento de base de datos con el schema que hemos creado
+
+npx prisma db push
+
+- Para que nos genere un prisma schema desde una bd
+
+npx prisma db pull
+

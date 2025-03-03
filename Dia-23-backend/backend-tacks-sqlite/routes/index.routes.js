@@ -6,9 +6,9 @@ const router = Router();
 
 router.post("/tareas", createTarea)
 router.get("/tareas", getAllTareas);
-router.get("/tareas:id", getTarea);
-router.put("/tareas:id", updateTarea);
-router.delete("/tareas:id", deleteTarea);
+router.get("/tareas/:id", getTarea);
+router.put("/tareas/:id", updateTarea);
+router.delete("/tareas/:id", deleteTarea);
 
 
 

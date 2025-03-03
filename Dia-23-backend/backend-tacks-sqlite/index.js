@@ -1,6 +1,7 @@
 import express from 'express'
 import router from './routes/index.routes.js'
 import {PORT, DOMAIN, FULL_DOMAIN} from './config/config.js'
+import {notFoundHandler, errorHandler} from './middlewares/errors.js'
 
 
 const app = express();
@@ -17,6 +18,10 @@ app.get('/', (req, res, next) => {
 
 //Rutas de nuestra API
 app.use('/api/v1/', router);
+
+//Middlewares de errores
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 
 app.listen(PORT, (req, res, next) => {

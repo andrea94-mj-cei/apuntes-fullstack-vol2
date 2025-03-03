@@ -1,6 +1,11 @@
 import { PrismaClient } from "@prisma/client";
+import { parse } from "dotenv";
 
-const prisma = new PrismaClient();
+//agregar a la terminal los logs de:
+//query:muestra la consulta SQL final
+//info: especifica las acciones que está realizando
+//error: muestra los errores que se producen 
+const prisma = new PrismaClient({ log: ['query', 'info'] });
 
 const responseAPI = {
     msg:"",
@@ -17,6 +22,9 @@ export const createTarea = async (req, res, next) =>{
             data:{
                 // tarea: req.body.tarea,
                 tarea: tarea
+            },
+            include:{
+                usuario:true
             }
         });
 
@@ -24,8 +32,9 @@ export const createTarea = async (req, res, next) =>{
         responseAPI.data=nuevaTarea;
         responseAPI.status="ok",
         responseAPI.cant=null;
-
-        res.status(200).json(responseAPI);
+        
+        //201 para crear
+        res.status(201).json(responseAPI);
 
     }catch(error){
         next(error);
@@ -40,7 +49,9 @@ export const getAllTareas = async (req, res, next) =>{
     responseAPI.msg="Las tareas han sido obtenidas con éxito";
     responseAPI.data=listaTareas;
     responseAPI.status="ok",
-    responseAPI.cant=null;
+    responseAPI.cant=listaTareas.length;
+
+    res.status(200).json(responseAPI);
 
     }catch(error){
         next(error);
@@ -58,7 +69,7 @@ export const getTarea = async (req, res, next) =>{
         }});
 
     responseAPI.msg=`La tarea con ${id} ha sido obtenida con éxito`;
-    responseAPI.data=listaTareas;
+    responseAPI.data=tarea;
     responseAPI.status="ok",
     responseAPI.cant=null;    
 
@@ -66,20 +77,53 @@ export const getTarea = async (req, res, next) =>{
         next(error);
     }
 };
-export const updateTarea = async (req, res, next) =>{
-    try{
 
-    const tareaActualizada = await prisma.tareas.update({
-        where:{
-            id: parseInt(req.params.id)
-        },
-        data:{
-            tarea: req.body.tarea
-        }
-    });
+export const updateTarea = async (req, res, next) => {
+    try {
+        const { id } = req.params;
 
-    }catch(error){
+        const {isCompletada, tarea} = req.body;
+
+        const tareaActualizada = await prisma.tareas.update({
+            where: {
+                id: parseInt(id) 
+            },
+            data : {
+                tarea: tarea,
+                isCompletada: isCompletada
+            }
+        });
+
+        responseAPI.msg = `La tarea con ${id} ha sido actualizada con éxito`;
+        responseAPI.data = tareaActualizada;
+        responseAPI.status = "ok";
+
+        res.status(200).json(responseAPI);
+
+    } catch (error) {
         next(error);
     }
 };
-export const deleteTarea = async (req, res, next) =>{};
+
+export const deleteTarea = async (req, res, next) =>{
+    try{
+        const {id} = req.params;
+
+        
+
+        const tareaEliminada = await prisma.tareas.delete({
+            where:{
+                id: parseInt(id)
+            }
+        });
+
+        responseAPI.msg=`La tarea con ${tareaEliminada.tarea} ha sido eliminada con éxito`;
+        responseAPI.data=tareaEliminada;
+        responseAPI.status="ok",
+
+        res.status(200).json(responseAPI);
+
+    }catch(error){
+        next(error);    
+    }
+};

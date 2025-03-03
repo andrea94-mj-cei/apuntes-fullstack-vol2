@@ -17,9 +17,16 @@ GET http://localhost:3000/api/v1/tareas
 GET http://localhost:3000/api/v1/tareas/1
 
 
-### OBTENER TAREA X
+### ACTUALIZAR TAREA X
 
-PUT http://localhost:3000/api/v1/tareas/1
+PUT http://localhost:3000/api/v1/tareas/8
+content-type: application/json
+
+{
+    "tarea": "mi nuevo titulo para tarea actualizada",
+    "isCompletada": false
+
+}
 
 ### ELIMINAR TAREA X
 
