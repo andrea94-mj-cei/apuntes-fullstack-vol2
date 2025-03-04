@@ -1,25 +1,28 @@
+@uid=1
+
 ### CREAR TAREA
 
-POST http://localhost:3000/api/v1/tareas
+POST http://localhost:3000/api/v1/{{uid}}/tareas
 content-type: application/json
 
 {
-    "tarea": "Estudiar Prisma"
+    "tarea": "Estudiar Prisma",
+    "usuarioId": 1
 }
 
 ### OBTENER TODAS LAS TAREAS
 
-GET http://localhost:3000/api/v1/tareas
+GET http://localhost:3000/api/v1/{{uid}}/tareas
 
 
 ### OBTENER TAREA X
 
-GET http://localhost:3000/api/v1/tareas/1
+GET http://localhost:3000/api/v1/{{uid}}/tareas
 
 
 ### ACTUALIZAR TAREA X
 
-PUT http://localhost:3000/api/v1/tareas/8
+PUT http://localhost:3000/api/v1/{{uid}}/tareas
 content-type: application/json
 
 {
@@ -30,4 +33,18 @@ content-type: application/json
 
 ### ELIMINAR TAREA X
 
-DELETE http://localhost:3000/api/v1/tareas/1
+DELETE http://localhost:3000/api/v1/{{uid}}/tareas
+
+
+
+
+### CREAR USUARIO
+
+POST http://localhost:3000/api/v1/usuario
+content-type: application/json
+
+{
+    "nombre": "Cristina",
+    "description": "",
+    "email": "chris.hola@gmail.com"
+}

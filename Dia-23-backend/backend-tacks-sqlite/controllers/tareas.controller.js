@@ -5,7 +5,7 @@ import { parse } from "dotenv";
 //query:muestra la consulta SQL final
 //info: especifica las acciones que está realizando
 //error: muestra los errores que se producen 
-const prisma = new PrismaClient({ log: ['query', 'info'] });
+const prisma = new PrismaClient({ log: ['info', 'error'] });
 
 const responseAPI = {
     msg:"",
@@ -17,11 +17,12 @@ const responseAPI = {
 export const createTarea = async (req, res, next) =>{
     try{
 
-        const{tarea} = req.body;
+        const{tarea, usuarioId} = req.body;
         const nuevaTarea = await prisma.tareas.create({
             data:{
                 // tarea: req.body.tarea,
-                tarea: tarea
+                tarea: tarea,
+                usuarioId: parseInt(usuarioId)
             },
             include:{
                 usuario:true
@@ -44,7 +45,25 @@ export const createTarea = async (req, res, next) =>{
 export const getAllTareas = async (req, res, next) =>{
     try{
 
-    const listaTareas = await prisma.tareas.findMany();    
+        const {uid} = req.params;
+    //const listaTareas = await prisma.tareas.findMany();   
+    
+    //traer tareas con su usuario:
+    const listaTareas = await prisma.tareas.findMany({
+        where:{
+            usuarioId: parseInt(uid)
+        },
+        include:{
+            usuario:true
+        }
+    });
+
+    //traer usuarios con sus tareas
+    // const listaTareas = await prisma.usuario.findMany({
+    //     include:{
+    //         tareas:true
+    //     }
+    // }); 
         
     responseAPI.msg="Las tareas han sido obtenidas con éxito";
     responseAPI.data=listaTareas;
@@ -91,6 +110,9 @@ export const updateTarea = async (req, res, next) => {
             data : {
                 tarea: tarea,
                 isCompletada: isCompletada
+            },
+            include:{
+                usuario:true    
             }
         });
 
@@ -109,7 +131,19 @@ export const deleteTarea = async (req, res, next) =>{
     try{
         const {id} = req.params;
 
-        
+        //ver si la tarea existe:
+        const tareaExiste = await prisma.tareas.findUnique({
+            where:{
+                id: parseInt(id)
+            }
+        });
+
+        //si no existe, avisar al usuario:
+        if(!tareaExiste){
+            responseAPI.status = "error";
+            responseAPI.msg=`La tarea con ${id} no existe`;
+            return responseAPI.status(404).json(responseAPI);
+        }
 
         const tareaEliminada = await prisma.tareas.delete({
             where:{

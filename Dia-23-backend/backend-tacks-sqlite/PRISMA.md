@@ -6,18 +6,20 @@ Es un OMR (Object Relational Mapping), nos permite trabajar con bases de datos d
 
 ```bash
 npm i @prisma/client
+# para instalar la librería de prisma
+
 npx prisma init
-npx prisma migrate dev --name init
-npx prisma generate
+# genera la carpeta de prisma con el archivo schema(archivo donde vamos a poder crear las tablas)
 ```
 
-- Después de instalarlo en el archivo .env, te crea solo la variable de entorno para la DB, la eliminamos, ya que es un ejemplo para una base de datos que no queremos. Creamos la nueva variable para nuestra DB. ej:
+- Después de instalarlo, en el archivo .env, te crea solo la variable de entorno para la DB, la eliminamos, ya que es un ejemplo para una base de datos que no queremos. Creamos la nueva variable para nuestra DB. ej:
 
 *Link a nuestra DB de SQLite
 DATABASE_URL="file:../db/base-datos.db"
 
 <!-- DESCARGAR EXTENSIÓN PRISMA (nos pone colores en el archivo schema de prisma y nos completa código, etc...) -->
 
+## Creamos los diferentes modelos
 - Vamos al archivo de la carpeta que se ha creado de PRISMA (shema.prisma) y creamos la primera tabla de la BD. Ej:
 
 model Tareas {
@@ -28,25 +30,33 @@ model Tareas {
   updatedAt     DateTime @updatedAt
 }
 
-- A continuación escribimos en consola:
+## Creación de migraciones
 
 ```bash
-npx prisma migrate dev --name init
+npx prisma migrate dev --name "nombre_migracion"
+# Cada vez que se realicen cambios en el archivo de shema para que nos guarde las actualizaciones
+
 npx prisma generate
 ```
 
-- En el archivo donde vamos a usar los datos de la DB hay que importar:
+- En los archivos controllers, donde vamos a usar los datos de la DB hay que importar:
 
 ```js
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 ```
 
-- Para que nos cree un nuevo documento de base de datos con el schema que hemos creado
 
-npx prisma db push
+- Para que nos cree un nuevo documento de base de datos con el schema que hemos creado:
+npx prisma migrate deploy
 
-- Para que nos genere un prisma schema desde una bd
+- Para que nos genere un prisma schema desde una bd:
+npx prisma db pull
+
+## Para usar PRISMA en una base de datos actual
+
+- crea en nuestro schema.prisma los modelos de prisma en base a una bd existente
 
 npx prisma db pull
+
 
