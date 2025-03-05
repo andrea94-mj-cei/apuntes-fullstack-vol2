@@ -1,10 +1,14 @@
 import express from 'express'
 import router from './routes/index.routes.js'
+import cors from 'cors'
 import {PORT, DOMAIN, FULL_DOMAIN} from './config/config.js'
 import {notFoundHandler, errorHandler} from './middlewares/errors.js'
 
 
 const app = express();
+
+//permite acceso desde cualquier servidor
+app.use(cors());
 
 //Middlewares
 app.use(express.json()); //Leer datos que vienen en el body de mi request

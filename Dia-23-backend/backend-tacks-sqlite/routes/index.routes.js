@@ -6,11 +6,11 @@ const router = Router();
 
 // ----- CRUD DE TAREAS -----
 
-router.post("/:uid/tareas", createTarea)
-router.get("/:uid/tareas", getAllTareas);
-router.get("/:uid/tareas/:id", getTarea);
-router.put("/:uid/tareas/:id", updateTarea);
-router.delete("/:uid/tareas/:id", deleteTarea);
+router.post("/user/:uid/tareas", createTarea)
+router.get("/user/:uid/tareas", getAllTareas);
+router.get("/user/:uid/tareas/:id", getTarea);
+router.put("/user/:uid/tareas/:id", updateTarea);
+router.delete("/user/:uid/tareas/:id", deleteTarea);
 //uid: id del usuario (userId)
 
 
