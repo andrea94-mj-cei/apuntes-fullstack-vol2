@@ -6,7 +6,7 @@ POST http://localhost:3000/api/v1/user/{{uid}}/tareas
 content-type: application/json
 
 {
-    "tarea": "Estudiar Prisma"
+    "tarea": "Trabajar"
 }
 
 ### OBTENER TODAS LAS TAREAS

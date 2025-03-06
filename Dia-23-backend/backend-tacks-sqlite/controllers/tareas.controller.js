@@ -58,12 +58,9 @@ export const getAllTareas = async (req, res, next) =>{
     //         usuario:true
     //     }
     // });
-    const listaTareas = await prisma.usuario.findUnique({
+    const listaTareas = await prisma.tareas.findMany({
         where:{
-            id: parseInt(uid)
-        },
-        include:{
-            tareas:true
+            usuarioId: parseInt(uid)
         }
     });
 
