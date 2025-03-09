@@ -1,0 +1,37 @@
+@uid=1
+
+### CREAR TAREA
+
+POST http://localhost:3000/api/v1/user/{{uid}}/tareas
+content-type: application/json
+
+{
+    "tarea": "Trabajar"
+}
+
+### OBTENER TODAS LAS TAREAS
+
+GET http://localhost:3000/api/v1/user/1/tareas
+
+
+### OBTENER TAREA X
+
+GET http://localhost:3000/api/v1/user/2/tareas/3
+
+
+### ACTUALIZAR TAREA X
+
+PUT http://localhost:3000/api/v1/user/{{uid}}/tareas/2
+content-type: application/json
+
+{
+    "tarea": "mi nuevo titulo para tarea actualizada",
+    "isCompletada": false
+
+}
+
+### ELIMINAR TAREA X
+
+DELETE http://localhost:3000/api/v1/user/{{uid}}/tareas/2
+
+

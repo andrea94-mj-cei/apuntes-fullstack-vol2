@@ -1,0 +1,33 @@
+### CREAR USUARIO
+
+POST http://localhost:3000/api/v1/usuario
+content-type: application/json
+
+{
+    "nombre": "Juan",
+    "description": "",
+    "email": "dn@gmail.com"
+}
+
+
+### OBTENER TODOS LOS USUARIOS
+GET http://localhost:3000/api/v1/usuario
+
+
+### OBTENER X USUARIO
+GET http://localhost:3000/api/v1/usuario/2
+
+
+### ACTUALIZAR USUARIO
+PUT http://localhost:3000/api/v1/usuario/4
+content-type: application/json
+
+{
+    "nombre": "Amparo",
+    "description": "",
+    "email": "amparo@gmail.com"
+}
+
+
+### ELIMINAR USUARIO X
+DELETE http://localhost:3000/api/v1/usuario/4
