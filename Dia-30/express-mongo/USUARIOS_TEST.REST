@@ -1,0 +1,12 @@
+@dominio=http://localhost:3000
+
+
+
+### Obtener todos los usuarios
+
+GET {{dominio}}/api/v1/users
+
+### Obtener usuario
+
+GET {{dominio}}/api/v1/users/5
+

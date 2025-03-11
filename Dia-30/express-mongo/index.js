@@ -1,21 +1,22 @@
 import express from 'express';
-import mongoose from 'mongoose';
+import router from "./routes/index.routes.js"
+import cors from 'cors';
 
+import {PORT, DOMAIN} from "./config/config.js";
+import {conectarDB} from "./db/mongoose.js"
 
 
 const app = express();
+console.clear();
 
-//Config.js
-const PORT = 3000;
-const DOMAIN = "http://localhost";
 
 //Conexion a MongoDB
-const conectarDB = async () =>{
-    const url = "mongodb+srv://andreamj94:Qs1bXY8wrv1vLktc@ceivalencia.tk43m.mongodb.net/?retryWrites=true&w=majority&appName=CeiValencia"
-    await mongoose.connect(url)
-    .then(()=> console.log('Conectado a la base de datos'))
-    .catch((err)=> console.log("Error de conexion", e));
-}
+
+
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 conectarDB();
 
@@ -27,8 +28,10 @@ app.get('/', (req, res, next) => {
 }
 );
 
+
+app.use("/api/v1", router);
+
 app.listen(PORT, (req, res, next) => {
     console.log(`Servidor corriendo en ${DOMAIN}:${PORT}`);
-  }
-  );
+  })
   
