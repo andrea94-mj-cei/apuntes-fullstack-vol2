@@ -1,4 +1,4 @@
-import { Usuario } from "../models/index.js";
+import { Usuario, Compra, Producto } from "../models/index.js";
 
 const responseAPI = {
   data: [],

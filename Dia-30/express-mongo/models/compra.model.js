@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const options = {
-    collection: "users",  //nombre de la colección en MongoDB
+    collection: "compras",  //nombre de la colección en MongoDB
     strict: true,            //solo permite guardar los campos definidos en el sistema
     collation: {
       locale: "es",          //configuración para el idioma español
@@ -10,11 +10,12 @@ const options = {
   }
   
   //esquema
-  const usuarioSchema = new mongoose.Schema({
-    nombre: String,
-    edad: Number,
-    compras: [{ type: mongoose.Schema.Types.ObjectId, ref: "Compra" }] //lista de compras del usuario
+  const compraSchema = new mongoose.Schema({
+    fecha: {type: Date, default: Date.now},
+
+    usuario: {type: mongoose.Schema.Types.ObjectId, ref: "Usuario"}, //usuario específico
+    productos: [{type: mongoose.Schema.Types.ObjectId, ref: "Productos"}] //lista de productos comprados
   }, options);
    
   //modelo (esta variable se suele exportar para utulizarla en otros archivos)
-  export const Usuario = mongoose.model("Usuario", usuarioSchema);
+  export const Compra = mongoose.model("Compra", compraSchema);
