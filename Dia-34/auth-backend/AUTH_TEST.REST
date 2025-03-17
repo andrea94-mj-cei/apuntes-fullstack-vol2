@@ -1,0 +1,18 @@
+@dominio=http://localhost:3000
+
+
+
+### Registrar nuevo usuario
+
+POST {{dominio}}/api/v1/auth/register
+Content-type: application/json
+
+{
+    "name": "Andrea Miguel",
+    "email": "andrea9460@gmail.com",
+    "password": "andreCei2"
+}
+
+### Obtener usuario
+
+
