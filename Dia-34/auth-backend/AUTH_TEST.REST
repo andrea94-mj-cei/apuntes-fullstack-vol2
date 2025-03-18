@@ -1,5 +1,7 @@
 @dominio=http://localhost:3000
 
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2Q4NjMzNzUzNzhhOTU0NDdhMTliNTciLCJuYW1lIjoiQW5kcmVhIE1pZ3VlbCIsImlhdCI6MTc0MjMxNDc5NywiZXhwIjoxNzQyMzIxOTk3fQ.peEBV0ZsPYa8zxJZeMQGVQfIDtGGxnYz_Rns2AKijW4
+
 
 
 ### Registrar nuevo usuario
@@ -13,6 +15,21 @@ Content-type: application/json
     "password": "andreCei2"
 }
 
-### Obtener usuario
+### Login usuario
+
+POST {{dominio}}/api/v1/auth/login
+Content-type: application/json
+
+{
+    "email": "andrea9460@gmail.com",
+    "password": "andreCei2"
+}
+
+
+### Obtener datos de "Andrea"
+
+GET {{dominio}}/api/v1/auth/me
+Authorization: Bearer {{token}}
+
 
 

@@ -63,12 +63,16 @@ export const loginUser = async (req, res, next) =>{
     //recibir datos del request
     const {email, password} = req.body;
 
-    //verificar si existe el usuario y si la contraseña es correcta
+    //verificamos si existe el usuario
     const user = await Usuario.findOne({email});
+
+    //termino la petición si el usuario no existe
     if(!user){
-      return res.status(401).json({
-        mensaje: "Usuario o contraseña incorrectos"
-      });
+      return res.status(404).json({mensaje: "Credenciales incorrectas"});
+    }
+    //comparo la clave del request con la clave de la DB
+    if(password != user.password){
+      return res.status(401).json({mensaje: "Credenciales incorrectas"});
     }
     
 
@@ -104,5 +108,29 @@ export const loginUser = async (req, res, next) =>{
 
 
 export const getCurrentUser = async (req, res, next) =>{
-  res.json({"mensaje": "obtener datos de usuario!"})
+
+    //leer el Token
+    //extraer el id
+
+
+  try{
+    //obtener id del TOKEN
+    const idUsuario = req.userId;
+
+    const user = await Usuario.findById(idUsuario).select('-password');
+    if(!user){
+      return res.status(404).json({mensaje: "Usuario no encontrado"});
+    }
+
+    const responseApi = {
+      mensaje:"Usuario encontrado",
+      data: user,
+      status: "ok"
+    }
+
+    res.status(200).json(responseApi);
+    
+  }catch(e){
+    next(e)
+  }
 }
