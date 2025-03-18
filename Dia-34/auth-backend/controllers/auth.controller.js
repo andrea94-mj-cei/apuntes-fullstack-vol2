@@ -59,7 +59,47 @@ export const registerUser = async (req, res, next) =>{
 
 
 export const loginUser = async (req, res, next) =>{
-  res.json({"mensaje": "login!"})
+  try{
+    //recibir datos del request
+    const {email, password} = req.body;
+
+    //verificar si existe el usuario y si la contraseña es correcta
+    const user = await Usuario.findOne({email});
+    if(!user){
+      return res.status(401).json({
+        mensaje: "Usuario o contraseña incorrectos"
+      });
+    }
+    
+
+    //si existe: mensaje OK, devolver usuario (sin contraseña)
+    const token = jwt.sign(
+      {
+        userId: user._id,
+        name: user.name
+      },
+      JWT_SECRET,
+      {
+        expiresIn: '2h'
+      }
+    );
+
+    //generar token y enviarlo
+    res.status(200).json({
+      mensaje: "Usuario logueado correctamente",
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email
+      }
+    });
+    
+ 
+    res.json({"mensaje": "login correcto!"})
+  }catch(e){
+    next(e);
+  }
 }
 
 
