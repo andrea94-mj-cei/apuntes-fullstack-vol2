@@ -21,8 +21,7 @@ const Registro = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log('Usuario registrado:', data);
-                // Aquí puedes manejar el token si es necesario
-                // localStorage.setItem('jwtToken', data.token);
+                //Token
             } else {
                 console.error('Error en el registro');
             }
