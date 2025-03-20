@@ -27,6 +27,7 @@ export const registerUser = async (req, res, next) =>{
       email, password, name
     });
     await user.save();
+    console.log(user, JWT_SECRET);
 
     //generar nuevo Token JWT
     const token = jwt.sign(
@@ -39,8 +40,8 @@ export const registerUser = async (req, res, next) =>{
         expiresIn: '2h'
       });
 
-    //devolver datos del usuario + JWT Token
-      res.status(201).json({
+
+      const response= {
         mensaje: "Usuario registrado correctamente",
         token,
         //user: user //esto NO se hace, para no enviar datos sensibles (como la contraseña) en el frontend.
@@ -49,9 +50,12 @@ export const registerUser = async (req, res, next) =>{
           name: user.name,
           email: user.email
         }
-      })
+      };
+      console.log(response);
+    //devolver datos del usuario + JWT Token
+      res.status(201).json({"ok": true, response});
     
-    res.json({"mensaje": "registrar!"})
+   
   }catch(e){
     next(e);
   }

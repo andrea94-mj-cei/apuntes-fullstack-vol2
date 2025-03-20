@@ -10,9 +10,9 @@ POST {{dominio}}/api/v1/auth/register
 Content-type: application/json
 
 {
-    "name": "Andrea Miguel",
-    "email": "andrea9460@gmail.com",
-    "password": "andreCei2"
+    "name": "Belén hohlAa",
+    "email": "ooaa5Gh@gmail.com",
+    "password": "andreCei3"
 }
 
 ### Login usuario

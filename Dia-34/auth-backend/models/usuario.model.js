@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const options = {
-    collection: "usuarios", //Nombre de la colección en mongo
+    collection: "users", //Nombre de la colección en mongo
     strict: true,
     collation: {
         locale: "es",

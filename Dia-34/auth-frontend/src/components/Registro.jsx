@@ -52,7 +52,7 @@ const Registro = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <input type="submit" />
+                <button>Registro</button>
             </form>
         </>
     );
