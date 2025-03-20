@@ -7,10 +7,10 @@ const Registro = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const nuevoUsuario = { nombre, email, password };
+        const nuevoUsuario = { name:nombre, email:email, password:password };
 
         try {
-            const response = await fetch(`${process.env.VITE_BACKEND}/auth/register`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND}/api/v1/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
