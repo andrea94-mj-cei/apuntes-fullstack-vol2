@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from '../config/config.js';
+import bcrypt from 'bcrypt';
 
 import { Usuario } from "../models/index.js";
 
@@ -22,9 +23,15 @@ export const registerUser = async (req, res, next) =>{
       });
     }
 
+    // Generar un salt Key
+    const salt = await bcrypt.genSalt(10);
+
+    // Hasth de nuestra clave
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     //crear el nuevo usuario
     const user = new Usuario({
-      email, password, name
+      email, password:hashedPassword, name
     });
     await user.save();
 
@@ -73,10 +80,10 @@ export const loginUser = async (req, res, next) =>{
     if(!user){
       return res.status(404).json({mensaje: "Credenciales incorrectas"});
     }
-    //comparo la clave del request con la clave de la DB
-    if(password != user.password){
-      return res.status(401).json({mensaje: "Credenciales incorrectas"});
-    }
+    
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    if(!isMatch) {return res.status(401).json({message: "Usuario o clave incorrectos!"})}
     
 
     //si existe: mensaje OK, devolver usuario (sin contraseña)

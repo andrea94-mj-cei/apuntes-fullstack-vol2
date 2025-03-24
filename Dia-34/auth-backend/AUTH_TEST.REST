@@ -10,9 +10,9 @@ POST {{dominio}}/api/v1/auth/register
 Content-type: application/json
 
 {
-    "name": "Belénn hohlAa",
-    "email": "ooaa5Ghh@gmail.com",
-    "password": "andreCei3"
+    "name": "Belen",
+    "email": "belen@gmail.com",
+    "password": "labelen1"
 }
 
 ### Login usuario
@@ -21,8 +21,8 @@ POST {{dominio}}/api/v1/auth/login
 Content-type: application/json
 
 {
-    "email": "andrea9460@gmail.com",
-    "password": "andreCei2"
+    "email": "belen@gmail.com",
+    "password": "labelen1"
 }
 
 
