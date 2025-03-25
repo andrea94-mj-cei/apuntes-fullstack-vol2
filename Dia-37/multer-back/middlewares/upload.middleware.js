@@ -27,9 +27,20 @@ const storage = multer.diskStorage({
     }     
 });
 
+//limita el tamaño de la imagen y el tipo de archivo que vamos a subir
+const fileFilter = (req, file, cb) =>{
+    //comprobar el tipo de archivo
+    if(file.mimetype.startsWhit('image/')) {
+        cb(bull, true);
+    }else {
+        cb(new Error('El archivo debe ser una imagen válida'), false);
+    }
+}
+
 //upload de imágenes
 export const uploadImg = multer({
     storage: storage,
+    fileFilter: fileFilter,
     limits: {
         fileSize: 5 * 1024 * 1024 //limitar el upload a 5mb
     }
